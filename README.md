@@ -14,17 +14,11 @@ composer install
 
 Passo 3: Configurar o Banco de Dados
 
-Este projeto utiliza SQLite como banco de dados. Para configurá-lo:
-
 Crie o arquivo de banco de dados:
 
 New-Item -Path "database/database.sqlite" -ItemType File
-
-
-No arquivo .env, configure a conexão do banco de dados para SQLite:
-
-DB_CONNECTION=sqlite
-DB_DATABASE=/caminho/para/o/seu/projeto/database/database.sqlite
+OU
+touch database/database.sqlite
 
 Passo 4: Configurar Migrations e Seeders
 
@@ -34,7 +28,6 @@ Rodar as migrations:
 
 php artisan migrate
 
-
 Após as migrations, rode os seeders para popular o banco com algumas questões de exemplo:
 
 php artisan db:seed --class=QuestionsSeeder
@@ -42,6 +35,8 @@ php artisan db:seed --class=QuestionsSeeder
 Passo 5: Gerar a Chave de Autenticação
 
 Este projeto utiliza Laravel Sanctum para autenticação via tokens. Para gerar a chave da API, execute:
+
+cp .env.example .env
 
 php artisan key:generate
 
