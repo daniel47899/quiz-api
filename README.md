@@ -18,7 +18,7 @@ Este projeto utiliza SQLite como banco de dados. Para configurá-lo:
 
 Crie o arquivo de banco de dados:
 
-touch database/database.sqlite
+New-Item -Path "database/database.sqlite" -ItemType File
 
 
 No arquivo .env, configure a conexão do banco de dados para SQLite:
