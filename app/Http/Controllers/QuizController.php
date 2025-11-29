@@ -114,4 +114,19 @@ class QuizController extends Controller
             'quiz' => $quiz,
         ]);
     }
+    
+    
+    public function history(Request $request)
+    {
+        $user = $request->user();
+    
+        $quizzes = Quiz::where('user_id', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+    
+        return response()->json([
+            'message' => 'Histórico carregado!',
+            'quizzes' => $quizzes
+        ]);
+    }
 }

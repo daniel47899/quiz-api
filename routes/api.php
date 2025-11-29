@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/quiz/start', [QuizController::class, 'start']);  // Iniciar quiz
     Route::post('/quiz/{quizId}/answer', [QuizController::class, 'answer']);  // Enviar resposta
     Route::post('/quiz/{quizId}/finish', [QuizController::class, 'finish']);  // Finalizar quiz
+    Route::get('/quiz/history', [QuizController::class, 'history']);  // Histórico de quizzes do usuário
+
 });
 
 // ==============================
