@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->index('user_id');  // Adicionando índice para `user_id`
+            $table->index('user_id');  
 
             $table->integer('score')->default(0);
             $table->integer('correct_answers')->default(0);

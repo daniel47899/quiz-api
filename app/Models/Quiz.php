@@ -32,10 +32,10 @@ class Quiz extends Model
         return $this->hasManyThrough(
             Question::class,
             QuizAnswer::class,
-            'quiz_id',      // foreign key on quiz_answers
-            'id',           // foreign key on questions
-            'id',           // local key on quizzes
-            'question_id'   // local key on quiz_answers
+            'quiz_id',      
+            'id',           
+            'id',           
+            'question_id'   
         );
     }
 }

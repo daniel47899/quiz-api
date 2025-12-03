@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             
-            // Índices para otimizar consultas
+            
             $table->index('quiz_id');
             $table->index('question_id');
 

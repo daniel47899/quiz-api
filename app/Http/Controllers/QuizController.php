@@ -10,14 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class QuizController extends Controller
 {
-    // ================================
-    // INICIAR UM NOVO QUIZ
-    // ================================
+    
     public function start(Request $request)
     {
         $user = $request->user();
 
-        // Seleciona 10 perguntas aleatórias
+        
         $questions = Question::inRandomOrder()->limit(10)->get();
 
         if ($questions->count() < 10) {
@@ -26,7 +24,7 @@ class QuizController extends Controller
             ], 400);
         }
 
-        // Cria o quiz
+        
         $quiz = Quiz::create([
             'user_id' => $user->id,
             'score' => 0,
@@ -42,9 +40,7 @@ class QuizController extends Controller
         ]);
     }
 
-    // ================================
-    // RESPONDER UMA PERGUNTA
-    // ================================
+    
     public function answer(Request $request, $quizId)
     {
         $request->validate([
@@ -55,7 +51,7 @@ class QuizController extends Controller
         $quiz = Quiz::findOrFail($quizId);
         $question = Question::findOrFail($request->question_id);
 
-        // Verifica se já foi respondida
+        
         $already = QuizAnswer::where('quiz_id', $quizId)
             ->where('question_id', $question->id)
             ->exists();
@@ -79,9 +75,7 @@ class QuizController extends Controller
         ]);
     }
 
-    // ================================
-    // FINALIZAR QUIZ
-    // ================================
+    
     public function finish(Request $request, $quizId)
     {
         $request->validate([
@@ -98,10 +92,10 @@ class QuizController extends Controller
             ->where('is_correct', false)
             ->count();
 
-        // Sistema de pontuação simples
+        
         $score = $correct * 10;
 
-        // Atualiza quiz
+        
         $quiz->update([
             'correct_answers' => $correct,
             'wrong_answers' => $wrong,

@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Texto da pergunta
+            $table->string('title');
             $table->string('option_a');
             $table->string('option_b');
             $table->string('option_c');
